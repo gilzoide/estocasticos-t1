@@ -15,8 +15,18 @@ ajusteEstocastico = map regulaLinha
         -- ajuste estocástico pra linha: se tiver algum 1, distribui `* (1/n)'
         -- entre os tais, senão põe `1/n' pra todo mundo
         regulaLinha l
-            | soma /= 0 = map (* (1 % numerator soma)) l
-            | otherwise = replicate n (1 % toInteger n)
+            | soma /= 0 = map (* (1 % soma)) l
+            | otherwise = vetorEstocastico n
             where
                 n = length l
-                soma = sum l
+                soma = length $ filter (> 0) l
+
+
+-- | Cria vetor estocástico de tamanho `n', com valores `1/n'
+vetorEstocastico :: Int -> Vetor
+vetorEstocastico n = replicate n (1 % n)
+
+
+-- | Cria matriz estocástica de tamanho `n x n', com valores `1/n'
+matrizEstocastica :: Int -> Matriz
+matrizEstocastica n = replicate n $ vetorEstocastico n

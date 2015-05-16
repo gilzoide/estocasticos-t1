@@ -2,8 +2,9 @@
 module Matriz where
 
 import Data.List (transpose)
+import GHC.Real (Ratio)
 
-type Valor = Rational
+type Valor = Ratio Int
 type Vetor = [Valor]
 type Matriz = [Vetor]
 
