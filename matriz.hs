@@ -1,9 +1,9 @@
--- | Modulo auxiliar pras operações com matrizes e vetores
+-- | Módulo auxiliar pras operações com matrizes e vetores
 module Matriz where
 
 import Data.List (transpose)
 
-type Valor = Double
+type Valor = Rational
 type Vetor = [Valor]
 type Matriz = [Vetor]
 
