@@ -4,11 +4,10 @@ module Estocasticos where
 import Matriz
 import GHC.Real
 
+type Adjacencias = [[Int]]
+
 -- | Ajuste estocástico: transforma uma matriz de adjacências em uma matriz
 -- estocástica, ou seja, as somas das probabilidades (linhas) iguala a 1
---
--- Nota: é esperado que a matriz contenha somente números 1,
--- como matriz de adjacência
 ajusteEstocastico :: Matriz -> Matriz
 ajusteEstocastico = map regulaLinha
     where
@@ -20,6 +19,7 @@ ajusteEstocastico = map regulaLinha
             where
                 n = length l
                 soma = length $ filter (> 0) l
+                -- otro jeito maneiro de escrever: length [ x | x <-l, x > 0 ]
 
 
 -- | Cria vetor estocástico de tamanho `n', com valores `1/n'
